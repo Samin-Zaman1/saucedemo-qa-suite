@@ -23,4 +23,15 @@ test.describe('Login', () => {
         await loginPage.login('', '');
         await expect(loginPage.error).toContainText('Username is required');
     });
+
+    test('invalid password is rejected', async () => {
+        await loginPage.login('standard_user', 'wrong_password');
+        await expect(loginPage.error).toContainText('do not match any user');
+});
+
+    test('whitespace-only username is rejected', async () => {
+        await loginPage.login('   ', 'secret_sauce');
+        await expect(loginPage.error).toContainText('do not match any user');
+    });
+
 });

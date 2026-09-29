@@ -11,7 +11,7 @@ export class LoginPage {
     this.password = page.getByPlaceholder('Password');
     this.loginButton = page.getByRole('button', { name: 'Login' });
     // The error message has no stable accessible name, so use its data-test hook.
-    this.error = page.getByTestId('error');
+    this.error = page.getByRole('alert');
   }
 
   async goto(): Promise<void> {
