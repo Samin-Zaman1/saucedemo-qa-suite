@@ -14,5 +14,7 @@ export class InventoryPage {
 async addBackpackToCart(): Promise<void> {
   await this.addBackpack.click();
 }
-
+async removeBackpackFromCart(): Promise<void> {
+  await this.removeFromCart.click();
+}
 }
