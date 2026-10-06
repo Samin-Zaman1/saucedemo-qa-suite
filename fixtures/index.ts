@@ -18,7 +18,9 @@ export const test = base.extend<Fixtures>({
   inventoryPage: async ({ page }, use) => {
     await use(new InventoryPage(page));
   },
-  usersApi: async ({ request }, use) => {
+  usersApi: async ({ request }, use, testInfo) => {
+    // Secrets aren't available to fork PRs, so skip API tests instead of failing the run.
+    testInfo.skip(!process.env.REQRES_API_KEY, 'REQRES_API_KEY is not set');
     await use(new UsersApi(request));
   },
 });
