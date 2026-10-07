@@ -1,5 +1,9 @@
 import { test, expect } from '../fixtures';
 
+// Traces record request headers, including the x-api-key. The HTML report is
+// published publicly, so never record traces for these tests.
+test.use({ trace: 'off' });
+
 test.describe('Users API', () => {
     test('get a single user', async ({ usersApi }) => {
         const response = await usersApi.getUser(2);
