@@ -1,15 +1,19 @@
 {
   "name": "saucedemo-qa-suite",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {},
+  "description": "Playwright + TypeScript UI and API test suite for saucedemo.com",
+  "scripts": {
+    "test": "playwright test",
+    "typecheck": "tsc --noEmit",
+    "report": "playwright show-report"
+  },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Samin Zaman",
+  "license": "MIT",
   "type": "commonjs",
   "devDependencies": {
     "@playwright/test": "^1.63.0",
-    "@types/node": "^26.6.3"
+    "@types/node": "^26.6.3",
+    "typescript": "^5.9.3"
   }
 }
