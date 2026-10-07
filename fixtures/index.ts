@@ -1,11 +1,15 @@
 import { test as base, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { InventoryPage } from '../pages/InventoryPage';
+import { CartPage } from '../pages/CartPage';
+import { CheckoutPage } from '../pages/CheckoutPage';
 import { UsersApi } from '../pages/UsersApi';
 
 type Fixtures = {
   loginPage: LoginPage;
   inventoryPage: InventoryPage;
+  cartPage: CartPage;
+  checkoutPage: CheckoutPage;
   usersApi: UsersApi;
 };
 
@@ -17,6 +21,12 @@ export const test = base.extend<Fixtures>({
   },
   inventoryPage: async ({ page }, use) => {
     await use(new InventoryPage(page));
+  },
+  cartPage: async ({ page }, use) => {
+    await use(new CartPage(page));
+  },
+  checkoutPage: async ({ page }, use) => {
+    await use(new CheckoutPage(page));
   },
   usersApi: async ({ request }, use, testInfo) => {
     // Secrets aren't available to fork PRs, so skip API tests instead of failing the run.
